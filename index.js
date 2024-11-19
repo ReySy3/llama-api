@@ -35,11 +35,8 @@ app.get('/llama32', async (req, res) => {
     const response = await axios.post(apiUrl, requestData, { headers });
 
     console.log('Response Data:', response.data);
-    
-    res.json({
-      author: 'HARU',
-      ...response.data
-    });
+
+    res.json(response.data);
   } catch (error) {
     console.error('Error:', error.message);
     res.status(error.response ? error.response.status : 500).json({ error: error.message });
